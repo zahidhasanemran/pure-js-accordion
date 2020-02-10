@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{ }
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #25c096;
+            color: fff;
+        }
+
+        .panel {
+            padding: 0 18px;
+            /* display: none; */
+            max-height: 0px;
+            background-color: white;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+        .rotateBtn{
+            position: relative;
+            width: 50px;
+            height: 15px;
+            display: block;
+        }
+        .rotateBtn:before {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50px;
+            height: 100%;
+            transition: .3s linear;
+            content: ">";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .accordion.active .rotateBtn:before {
+            transform: rotate(90deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+<div>
+    <button class="accordion active" id="btn1">Section 1 <span class="rotateBtn"></span></button>
+    <div class="panel" style="max-height: 100%;">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.</p>
+    </div>
+    <button class="accordion" id="btn2">Section 2 <span class="rotateBtn"></span></button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.</p>
+    </div>
+    <button class="accordion" id="btn3">Section 3 <span class="rotateBtn"></span></button>
+    <div class="panel"> 
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.</p>
+    </div>
+</div>
+
+    
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var panels = document.getElementsByClassName("panel");
+        
+        for(var i = 0; i < acc.length; i++){
+
+            acc[i].addEventListener("click", function(){
+
+                for(var i = 0; i < panels.length; i++){
+                    panels[i].style.maxHeight = null;
+                }
+
+                for(var i = 0; i <acc.length; i++){
+                    acc[i].classList.remove("active");
+                }
+
+                this.classList.add("active");
+                var nextSibs = this.nextElementSibling;
+                
+                if(nextSibs.style.maxHeight){
+                    nextSibs.style.maxHeight = null;
+                    
+                }else{
+                    nextSibs.style.maxHeight = nextSibs.scrollHeight + "px";
+                    
+                }
+
+               
+            })
+        }
+
+        
+
+    </script>
+
+    
+
+</body>
+
+</html>
