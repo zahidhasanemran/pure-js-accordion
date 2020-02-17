@@ -94,33 +94,57 @@
     <script>
         var acc = document.getElementsByClassName("accordion");
         var panels = document.getElementsByClassName("panel");
+
+
+        function closeAll(){
+            for(let i = 0; i < panels.length; i++){
+                panels[i].style.maxHeight = null;
+                acc[i].classList.remove("active");
+            }
+        }
+
         
-        for(var i = 0; i < acc.length; i++){
 
+        for(let i = 0; i < acc.length; i++){
             acc[i].addEventListener("click", function(){
-
-                for(var i = 0; i < panels.length; i++){
-                    panels[i].style.maxHeight = null;
-                }
-
-                for(var i = 0; i <acc.length; i++){
-                    acc[i].classList.remove("active");
-                }
-
-                this.classList.add("active");
                 var nextSibs = this.nextElementSibling;
-                
-                if(nextSibs.style.maxHeight){
-                    nextSibs.style.maxHeight = null;
-                    
-                }else{
-                    nextSibs.style.maxHeight = nextSibs.scrollHeight + "px";
-                    
-                }
-
-               
+                closeAll();
+                this.classList.add("active");
+                panels[i].style.maxHeight = null;
+                nextSibs.style.maxHeight ? nextSibs.style.maxHeight = null : nextSibs.style.maxHeight = nextSibs.scrollHeight + "px";
             })
         }
+
+        
+        
+        // for(var i = 0; i < acc.length; i++){
+
+        //     acc[i].addEventListener("click", function(){
+
+        //         for(var i = 0; i < panels.length; i++){
+        //             panels[i].style.maxHeight = null;
+        //         }
+
+        //         for(var i = 0; i <acc.length; i++){
+        //             acc[i].classList.remove("active");
+        //         }
+
+        //         this.classList.add("active");
+        //         var nextSibs = this.nextElementSibling;
+                
+        //         if(nextSibs.style.maxHeight){
+        //             nextSibs.style.maxHeight = null;
+                    
+        //         }else{
+        //             nextSibs.style.maxHeight = nextSibs.scrollHeight + "px";
+                    
+        //         }
+
+               
+        //     })
+        // }
+
+        
 
         
 
