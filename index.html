@@ -1,157 +1,57 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body{ }
-        .accordion {
-            background-color: #eee;
-            color: #444;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 15px;
-            transition: 0.4s;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .active,
-        .accordion:hover {
-            background-color: #25c096;
-            color: fff;
-        }
-
-        .panel {
-            padding: 0 18px;
-            /* display: none; */
-            max-height: 0px;
-            background-color: white;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-        }
-        .rotateBtn{
-            position: relative;
-            width: 50px;
-            height: 15px;
-            display: block;
-        }
-        .rotateBtn:before {
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 50px;
-            height: 100%;
-            transition: .3s linear;
-            content: ">";
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .accordion.active .rotateBtn:before {
-            transform: rotate(90deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-    </style>
-
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Js</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    
 
-<div>
-    <button class="accordion active" id="btn1">Section 1 <span class="rotateBtn"></span></button>
-    <div class="panel" style="max-height: 100%;">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
+<div class="accordion_wrapper">
+
+    <div class="accordion">
+        <div class="accordion__heading">
+            <h3 class="accordion__title">What is your favourit Book? </h3>
+        </div>
+        <div class="accordion__content show">
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem doloribus dolores commodi optio nam corporis totam dolorum iure dicta, unde, nostrum officiis, obcaecati qui.</p>
+        </div>
     </div>
-    <button class="accordion" id="btn2">Section 2 <span class="rotateBtn"></span></button>
-    <div class="panel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
+    <div class="accordion">
+        <div class="accordion__heading">
+            <h3 class="accordion__title">What is your favourit Fish? </h3>
+        </div>
+        <div class="accordion__content">
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem doloribus dolores commodi optio nam corporis totam dolorum iure dicta, unde, nostrum officiis, obcaecati qui.</p>
+        </div>
     </div>
-    <button class="accordion" id="btn3">Section 3 <span class="rotateBtn"></span></button>
-    <div class="panel"> 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
+
+    <div class="accordion">
+        <div class="accordion__heading">
+            <h3 class="accordion__title">What is your favourit Book? </h3>
+        </div>
+        <div class="accordion__content">
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem doloribus dolores commodi optio nam corporis totam dolorum iure dicta, unde, nostrum officiis, obcaecati qui.</p>
+        </div>
     </div>
+    <div class="accordion">
+        <div class="accordion__heading">
+            <h3 class="accordion__title">What is your favourit Fish? </h3>
+        </div>
+        <div class="accordion__content">
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem doloribus dolores commodi optio nam corporis totam dolorum iure dicta, unde, nostrum officiis, obcaecati qui.</p>
+        </div>
+    </div>
+
 </div>
 
-    
 
-    <script>
-        var acc = document.getElementsByClassName("accordion");
-        var panels = document.getElementsByClassName("panel");
-
-
-        function closeAll(){
-            for(let i = 0; i < panels.length; i++){
-                panels[i].style.maxHeight = null;
-                acc[i].classList.remove("active");
-            }
-        }
-
-        
-
-        for(let i = 0; i < acc.length; i++){
-            acc[i].addEventListener("click", function(){
-                var nextSibs = this.nextElementSibling;
-                closeAll();
-                this.classList.add("active");
-                panels[i].style.maxHeight = null;
-                nextSibs.style.maxHeight ? nextSibs.style.maxHeight = null : nextSibs.style.maxHeight = nextSibs.scrollHeight + "px";
-            })
-        }
-
-        
-        
-        // for(var i = 0; i < acc.length; i++){
-
-        //     acc[i].addEventListener("click", function(){
-
-        //         for(var i = 0; i < panels.length; i++){
-        //             panels[i].style.maxHeight = null;
-        //         }
-
-        //         for(var i = 0; i <acc.length; i++){
-        //             acc[i].classList.remove("active");
-        //         }
-
-        //         this.classList.add("active");
-        //         var nextSibs = this.nextElementSibling;
-                
-        //         if(nextSibs.style.maxHeight){
-        //             nextSibs.style.maxHeight = null;
-                    
-        //         }else{
-        //             nextSibs.style.maxHeight = nextSibs.scrollHeight + "px";
-                    
-        //         }
-
-               
-        //     })
-        // }
-
-        
-
-        
-
-    </script>
-
-    
-
+<script src="/script.js"></script>
 </body>
-
 </html>
